@@ -3,8 +3,10 @@
        
         <div class="inputs">
         <input type="text" id="input" placeholder="Eintrag eingeben">
+        
         <button @click="add">Hinzufügen</button>
         </div>
+        <div><span id="info"></span></div>
 
         <div class="liste" >
             <ul>
@@ -37,6 +39,7 @@
 <script>
 
 
+
   
 export default {
     data(){
@@ -49,13 +52,14 @@ export default {
     },
     methods:{//Neu Liste saved  in Items Array
         add(){
+            document.getElementById("info").innerHTML="";
             let input= document.getElementById("input");
             if(input.value!=""){
                 this.items.push(input.value);
                 input.value="";
             }
             else{
-                alert("bitte eingeben")
+                document.getElementById("info").innerHTML="* Bitte Eintag eingeben";
             }
         },//Delete the item, where cursor on
         
@@ -115,6 +119,12 @@ export default {
     border:none;
     cursor: pointer;
 
+}
+#info{
+    font-size: 0.8em;
+    text-align: left;
+    padding-top: 5px;
+    display: block;
 }
 .liste{
     border-top:1px solid rgb(219, 212, 212);
